@@ -10,6 +10,7 @@ class studentModel:
     def display(self):
         if len(self.studentList) > 0:
             for student in self.studentList:
+                print("\n")
                 print(f"Name: {student.name}")
                 print(f"Age: {student.age}")
                 print(f"Gender: {student.gender}")
@@ -22,12 +23,15 @@ class studentModel:
         if len(self.studentList) > 0:
             for student in self.studentList:
                 if student.name == name:
-                    return self.studentList.index(student.name)
+                    return self.studentList.index(student)
+                else:
+                    return -1
         else:
             return -1
 
-    def delete(self, index):
-        self.studentList.pop(index)
+    def delete(self, name):
+        student = self.getIndex(name)
+        self.studentList.pop(student)
 
     def edit(self, name, age, gender, course, year):
         index = self.getIndex(name)
