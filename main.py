@@ -16,6 +16,7 @@ def main():
         elif prompt == 4:
             studentcontroller.show()
         elif prompt == 5:
+            studentcontroller.show()
             break
         else:
             print("Invalid Option")
