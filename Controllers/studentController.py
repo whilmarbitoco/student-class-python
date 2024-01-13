@@ -2,8 +2,9 @@ from Models.studentModel import studentModel
 from student import Student
 
 class studentController:
-    def __init__(self):
-        self.stuentmodel = studentModel()
+    def __init__(self, model, view):
+        self.studentmodel = model
+        self.view = view
 
     def getGender(self, choice):
         if choice == 1:
@@ -43,20 +44,20 @@ class studentController:
                 break
 
         newStudent = Student(name, age, gender, course, year)
-        self.stuentmodel.add(newStudent)
+        self.studentmodel.addSt(newStudent)
 
 
     def show(self):
-        self.stuentmodel.display()
+        self.studentmodel.display()
     
     def delete(self):
         name = input("Enter name you wanna delete: ")
-        self.stuentmodel.delete(name)
+        self.studentmodel.delete(name)
         print("Successfuly Deleted.")
     
     def edit(self):
         name = input("Enter your name you wanna edit: ")
-        if self.stuentmodel.getIndex(name) == -1:
+        if self.studentmodel.getIndex(name) == -1:
             print("No records Found")
     
         else:
@@ -77,4 +78,7 @@ class studentController:
                     break
 
             editStudent = Student(name, age, gender, course, year)
-            self.stuentmodel.edit(editStudent)
+            self.studentmodel.edit(editStudent)
+
+    def run(self):
+        self.view.mainloop()
